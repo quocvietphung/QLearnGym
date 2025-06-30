@@ -9,7 +9,7 @@ def evaluate_agent(
     max_steps=100,
     render=False
 ):
-    env = gym.make(env_name)
+    env = gym.make(env_name, render_mode="ansi")
     q_table = load_qtable(q_table_path)
 
     total_rewards = []
@@ -24,7 +24,8 @@ def evaluate_agent(
             state = next_state
 
             if render:
-                env.render()
+                output = env.render()
+                print(output)
 
             if done:
                 break
